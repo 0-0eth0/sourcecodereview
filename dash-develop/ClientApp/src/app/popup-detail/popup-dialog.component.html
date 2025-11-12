@@ -1,0 +1,94 @@
+<div *ngIf="data" class="modal" tabindex="-1" role="dialog" style="display:block!important">  
+    <div class="modal-dialog  modal-dialog-centered custom-alert1" role="document"  >  
+      <div class="modal-content">
+        <div class="modal-header rounded-0"  >
+          
+          <div >
+            <span *ngIf="subtitle" class="fontSizeXs">{{subtitle}}</span>
+            <h5 class="modal-title fontSizeR fw700" id="exampleModalLabel">{{title}}</h5>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="data.okFn()"></button>
+        </div>
+        <div class="border-bottom" *ngIf="data.type=='salestrend'"></div>
+        <div  class="modal-body" *ngIf="data.type=='companywiseaging'">
+          <div class="row">
+            <div class="col-md-6">
+            
+            <div class="dropdown">
+    <button class="btn btn-secondary borderRadius30 redBG dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+      {{selectedComboValue}}
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li *ngFor="let list of ageingCompany"><a class="dropdown-item" (click)="selectChangeHandler('companywiseaging',list.name)" >{{list.name}}</a></li>
+     </ul>
+  </div>
+             </div>
+            
+            <div class="col-md-6">
+            <div class="pull-right">
+             <h6 class="fontGray" (click)="getCompanywiseAgingData()"><i class="fa fa-refresh color_blue" aria-hidden="true"></i> Refresh</h6>
+            </div>
+            </div>
+          </div>
+
+          
+          <div class="row mt-2">
+            <div class="col-md-4">
+          <h6 class="fontGray">Ageing Dues</h6>
+           </div>
+           
+           <div class="col-md-8">
+          <h6 class="fontGray">TOTAL OS : {{totalOs | number:'1.2-2'}} | LIST {{ReportData.length}}</h6>
+           </div>
+           
+        </div>
+          
+          <div class="row text-center">
+            <div class="col-md-12">
+               <table   class="table" style="text-align: center;" *ngIf="ageingReportData">
+              <tbody>
+              <tr class="bgWhite"  >
+               <th class="bgWhite grey-color">Days</th>
+               <th class="bgWhite grey-color">Outstanding</th>
+              </tr>
+              <tr  *ngFor="let list of ReportData" style="vertical-align: middle; border-bottom: 2px solid #fff;;" class="mb-2">
+                <td class="tblbgWhiteSmoke "><p class="fontGray mb-0 "><a class="btn btn-primary-DB borderRadius30">{{list.ageing}}</a></p></td>
+                <td  class="tblbgWhiteSmoke">₹ {{list.amount | number:'1.2-2'}}</td>
+              </tr>
+              </tbody>
+               </table>
+            </div>
+          </div>
+        </div>
+        <div  class="modal-body"  *ngIf="data.type=='salestrend'">
+          <sales-trend ></sales-trend>
+        </div>
+        <div  class="modal-body"  *ngIf="data.type=='productwisesales'">
+          <analytics ></analytics>
+        </div>
+        <div  class="modal-body"  *ngIf="data.type=='saleshistory'">
+          <saleshistory ></saleshistory>
+        </div>
+        <div  class="modal-body"  *ngIf="data.type=='qdcd'">
+          <qdcd ></qdcd>
+        </div>
+        <div  class="modal-body"  *ngIf="data.type=='paymenthistory'">
+          <paymenthistory ></paymenthistory>
+        </div>
+        <div  class="modal-body"  *ngIf="data.type=='collectiontrend'">
+          <collection-trend ></collection-trend>
+        </div>
+        <div  class="modal-body"  *ngIf="data.type=='salesoutstanding'">
+          <sales-outstanding></sales-outstanding>
+        </div>
+        
+        <div  class="modal-body"  *ngIf="data.type=='salesanalysissummary'">
+          <div class="row"> 
+          <div class="text-center">
+            <h1 class="fontGray ">Comming soon.......!</h1>
+           </div>
+          </div>
+        </div>
+      </div>  
+    </div>
+</div>  

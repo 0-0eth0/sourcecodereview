@@ -1,0 +1,49 @@
+<div class="bg-white p-4 shadow-sm rounded-3">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="fontSizeLg fw600 mb-2">Analytics Overview</div>
+    </div>
+  </div>
+
+    <div class="row ">
+
+  
+      <div class="row ">
+    
+      
+      <div class="w-100 mb-2 mt-3">
+          <div class="float-start fontSizeLg fw600">Sales</div>
+          <a class="float-end btn btn-bordered fontCap" (click)="salesSummary()">Sales Summary <i class="fa fa-angle-right"></i></a>
+      </div>
+    </div>
+      <div class="row">
+        <div class="col-md-6 "><div class="w-100 ch-val border-top pb-3 pt-3 curPointer"  (click)="QDandCDData()"><img src="assets/images/Group 7957-2.png"/> QD and CD <img class="float-end" src="assets/images/icon_material_arrow_forward.png"/></div></div>
+        <div class="col-md-6 "><div class="w-100 ch-val border-top pb-3 pt-3 curPointer"  (click)="salesTrend()"><img src="assets/images/Group 7961.png"/>Sales Trend <img class="float-end" src="assets/images/icon_material_arrow_forward.png"/></div></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 "><div class="w-100 ch-val border-top pb-3 pt-3 curPointer"  (click)="salesComparewithLastyear()"><img src="assets/images/Group 7957.png"/>Compare with last year <img class="float-end" src="assets/images/icon_material_arrow_forward.png"/></div></div>
+      <div class="col-md-6 "><div class="w-100 ch-val border-top pb-3 pt-3 curPointer"  (click)="productWiseSale()"><img src="assets/images/Group 7957-1.png"/>Product wise sale <img class="float-end" src="assets/images/icon_material_arrow_forward.png"/></div></div>
+    </div>
+    </div>
+    <div class="row border-bottom" style="margin-left: 0px; margin-right: 25px;"></div>
+    <div class="row ">
+      <div class="row">
+    
+      
+        <div class="w-100 mb-2 mt-3">
+            <div class="float-start fontSizeLg fw600">Collection</div>
+            <a class="float-end btn btn-bordered fontCap" (click)="collectionSummary()">Collection Summary <i class="fa fa-angle-right"></i></a>
+            <a class="float-end btn btn-bordered fontCap mx-4" (click)="salesAgeingOutstanding()">Ageing Outstanding <i class="fa fa-angle-right"></i></a>
+
+        </div>
+      </div>
+        <div class="row">
+          <div class="col-md-6 "><div class="w-100 ch-val border-top pb-3 pt-3 curPointer"  (click)="collectionTrend()"><img src="assets/images/Group 7957-2.png"/>Collection Trend <img class="float-end" src="assets/images/icon_material_arrow_forward.png"/></div></div>
+          <div class="col-md-6 "><div class="w-100 ch-val border-bottom border-top pb-3 pt-3 curPointer"  (click)="daySalesOutstanding()"><img src="assets/images/Group 7962.png"/>Day Sales Outstanding <img class="float-end" src="assets/images/icon_material_arrow_forward.png"/></div></div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 "><div class="w-100 ch-val border-top pb-3 pt-3 curPointer"  (click)="collectionComparewithLastyear()"><img src="assets/images/Group 7957.png"/>Compare with last year <img class="float-end" src="assets/images/icon_material_arrow_forward.png"/></div></div>
+      </div>
+    </div>
+    
+</div>

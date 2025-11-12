@@ -1,0 +1,542 @@
+<div class="container">
+  <div class="row">
+    <main class="col-md-12 ms-sm-auto col-lg-12 px-md-4">
+        <div class="row">
+          <div class="mb-3">
+            <div class="float-start mx-2"><a class="btn btn-primary d-inline btn-sm mr-3" href="#" [routerLink]="['/dealer']" >Customers</a></div>
+            <!--<div class="float-start mx-2"><a class="btn btn-primary d-inline btn-sm mr-4" href="#">My To-do List - PH2</a></div>
+            <div class="float-start mx-2"><a class="btn btn-primary d-inline btn-sm mr-4" href="#">My call list - PH2</a></div>
+            <div class="float-start mx-2"><a class="btn btn-primary d-inline btn-sm mr-4" href="#">My Trainings - PH2</a></div>
+            <div class="float-start mx-2"> <a class="btn btn-primary d-inline btn-sm" href="#">Suvidha App Tutorial - PH2</a></div>-->
+          </div> 
+            <div class="col-md-12">
+                <div class="row">
+                 
+                  <div class="dashHomewidt194 float-start">
+                    <div class="bg-white p-1">
+                      <div class="dashHomeFontsizeBox mb-3">Monthly Volume</div>
+                      <div class="row">
+                        <div class="col-md-8 fontSizeXs">
+                          Tgt(MT) {{homeWidgetData.monthly_Volume_TGT?homeWidgetData.monthly_Volume_TGT:""}}MT <br> Ach(MT){{homeWidgetData.monthly_Volume_Ach?homeWidgetData.monthly_Volume_Ach:""}}MT
+                        </div>
+                        <div class="col-md-4 dashHomeFontsizeBox11">{{monthly_Volume_Per  | number:'0.0-2'}}%</div>
+                      </div>
+                    </div> 
+                  </div>
+                  <div class="dashHomewidt194 float-start">
+                    <div class="bg-white p-1">
+                      <div class="dashHomeFontsizeBox mb-3">Daily Volume</div>
+                      <div class="row">
+                        <div class="col-md-8 fontSizeXs">
+                          Tgt(MT) ​{{homeWidgetData.daily_Volume_TGT?homeWidgetData.daily_Volume_TGT:""}}MT <br> Ach(MT)​{{homeWidgetData.daily_Volume_Ach?homeWidgetData.daily_Volume_Ach:""}}MT
+                        </div>
+                        <div class="col-md-4 dashHomeFontsizeBox11">{{daily_Volume_Per| number:'0.0-2'}}%</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="dashHomewidt194 float-start">
+                    <div class="bg-white p-1">
+                      <div class="dashHomeFontsizeBox mb-1"># Customers billed​</div>
+                      <div class="row">
+                        
+                        <div class="col-md-12 fontSizeXs row gx-0" style="padding-top: 2px;">
+                          <div class="col-md-5 fontSizeXs" style="padding-top: 7px;">
+                            &nbsp;&nbsp;TD : <b>{{homeWidgetData.billed_TD?homeWidgetData.billed_TD:""}}</b>
+                          </div>
+                          <div class="col-md-7 dashHomeFontsizeBox11" style="text-align: right;">MTD : <b>{{homeWidgetData.billed_MTD?homeWidgetData.billed_MTD:""}}</b></div>  
+                          <div class="col-md-5">&nbsp;&nbsp;TD Billed:&nbsp;<b>{{billedUnbilledCustomerData?billedUnbilledCustomerData.billed_dealers_no:"0"}}</b>
+                          </div>
+                          <div class="col-md-7 text-right">TD Unbilled:<b>{{billedUnbilledCustomerData?billedUnbilledCustomerData.unbilled_dealers_no:"0"}}</b>
+                          </div>
+                          <div class="col-md-5">&nbsp;&nbsp;MTD Billed:<b>{{billedUnbilledCustomerData?billedUnbilledCustomerData.billed_dealers_no:"0"}}</b>
+                          </div>
+                          <div class="col-md-7 text-right">MTD Unbilled:<b>{{billedUnbilledCustomerData?billedUnbilledCustomerData.unbilled_dealers_no:"0"}}</b>
+                          </div>
+   
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="dashHomewidt194 float-start">
+                    <div class="bg-white p-1">
+                      <div class="dashHomeFontsizeBox mb-3"># Customers​</div>
+                      <div>
+                        <div class="row gx-0" >
+                          <div class="col-md-5 fontSizeXs" >
+                            # Active: <b> {{homeWidgetData.billed_TD?homeWidgetData.active_dealers_count:""}}</b>
+                          <br/>
+                          # Blocked: <b>{{homeWidgetData.billed_MTD?homeWidgetData.blocked_dealers_count:""}}</b>
+                          </div>
+                          <div class="col-md-7 text-right" ><span style="font-size:11px;">#Total:&nbsp;</span> <span class="dashHomeFontsizeBox11">{{totalCustomers?totalCustomers:""}}</span></div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <!--   <div class="dashHomewidt194 float-start">
+                    <div class="bg-white p-1">
+                      <div class="dashHomeFontsizeBox mb-3">Call for the Day</div>
+                      <div class="row">
+                        <div class="col-md-6 dashHomeFontsizeBox11">
+                          <span style="font-size: 12px;">TGT</span> <br>
+                          60</div>
+                        <div class="col-md-6 fontSizeXs" style="text-align: right !important;">
+                          <div class="dashHomeFontsizeBox122" style="text-align: right !important;">Ach: 48</div>
+                          <div class="dashHomeFontsizeBox1444" style="text-align: right !important;">Bal: 12</div>
+                        
+                        </div>
+                       
+                      </div>
+                    </div>
+                  </div> -->
+                
+                </div>
+                <div class="row mt-4">
+                  <div class="col-md-6" >
+                    <div class="bg-white mb-4 info_box shadow-sm rounded-3" style="height:400px">
+                    <performance-chart></performance-chart>
+                  </div>
+                  </div>
+                      
+                      <div class="col-md-6">
+                        <div class="bg-white mb-4 info_box shadow-sm rounded-3"  style="height:400px">
+                          <div class="p-3 pt-3 pb-2 border-bottom dashHomeBorderBottom">
+                          <div class="row">
+                             <div class="col-md-12"> 
+							 <div class="info_box_header row"> 
+ 							 <div class="fontSizeLg fw600 mb-2 col-md-8 dashHomefontSize18px dashHomeWidColor">Billed & Unbilled customers</div> 
+                             
+                             <div class=" col-md-4 text-right">
+                              <a class="btn d-inline btn-sm d-inline   mr-3 borderRadius5 ml-2"  [ngClass]="{'btn-primary ':billedUnbilledReportType=='day','btn-bordered-gray ':billedUnbilledReportType=='week'}" (click)="getBilledUnbilledCustomer('day')">DAY</a>
+                              <a class="btn d-inline btn-sm  d-inline   mr-3 borderRadius5 ml-2 marginleft25" [ngClass]="{'btn-primary ':billedUnbilledReportType=='week','btn-bordered-gray':billedUnbilledReportType=='day'}"  (click)="getBilledUnbilledCustomer('week')">WEEK</a>
+                             
+                             </div>	
+							 </div>
+                              </div>
+ 							</div>
+            </div>     
+                            
+                            <div class="row">
+                             <div class="col-md-12"> 
+							 <div class="info_box_content"> 
+                <div class="px-3 pt-2">
+                  <div class="row">
+                    <div class="col-md-8">
+                    <p class="c_gray fontSizeRsm">Last Refresh Time: {{unBilledListLastRefreshTime | date:'MM/dd/yyyy hh:mm:ss a'}}</p>
+                    </div> 
+                    <div class="col-md-4 text-right">
+                    <p class="c_gray fontSizeRsm curPointer" (click)="getBilledUnbilledCustomer('')"><i class="fa fa-refresh  bg_orange fs-md" style="font-size: 11px !important;"></i> Refresh</p>
+                    </div>
+                    </div>
+                 </div>
+                 <div class="row">
+                   <div class="col-md-8">&nbsp;</div>
+                  <div class="col-md-4 text-right">
+                    <select class="form-select fontSizeXs dashHomeSelect " aria-label="Default select example" [(ngModel)]="selectedBilledOption"  (change)="refreshTable($event)">
+                      <option  value="All" >All</option>
+                      <option  value="Billed" >Billed</option>
+                      <option  value="Unbilled" >Unbilled</option>
+                      </select>
+                   </div>
+                 </div>
+                 
+                 <div class="dashHomeTable" style="width: 100%;overflow: auto;">
+                  <table class="table fixheader" >
+                    <thead>
+                  <tr class="table-secondary">
+                    <th scope="col" >Code</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Billing Status</th>
+                    <th scope="col">Last Billed date</th>
+                    
+                  </tr>
+                </thead>
+                <tbody style="max-height:225px;" slimScroll [options]="opts">
+                  <tr *ngFor="let list of allUnbilledBilledrpt" style="table-layout:fixed">
+                    <td scope="row">{{list.dealerId}}</td>
+                    <td >{{list.name}}</td>
+                    <td  [ngClass]="{ ' red_color ' : list.billStatus == 'Unbilled' }">{{list.billStatus}}</td>
+                    <td >{{list.lastBillDate}}</td>
+                    
+                  </tr>
+                  <tr *ngIf="!allUnbilledBilledrpt||allUnbilledBilledrpt.length==0">
+                   <td scope="row" colspan="4" style="text-align: center;">Data Not Found</td>
+                  </tr>
+                </tbody>
+              
+                </table>
+                </div>
+                 <div class="row" style="display:none">
+                  <div class="" *ngIf="billedUnbilledReportType=='day'">
+                    <a class="btn  btn-primary d-inline btn-sm d-inline   mr-3 borderRadius5 ml-2 marginleft25"  href="#" [routerLink]="['/dealer','billedcustomer']">Billed Customer ({{billedUnbilledCustomerData?billedUnbilledCustomerData.today_billed_dealers_no:"0"}})</a>
+                    <a class="btn  btn-primary d-inline btn-sm  d-inline   mr-3 borderRadius5 ml-2 marginleft25"  href="#" [routerLink]="['/dealer', 'unbilledcustomer']">UnBilled Customer ({{billedUnbilledCustomerData?billedUnbilledCustomerData.today_unbilled_dealers_no:"0"}})</a>
+                   </div>	
+                   <div class=""  *ngIf="billedUnbilledReportType=='week'">
+                    <a class="btn  btn-primary d-inline btn-sm d-inline   mr-3 borderRadius5 ml-2 marginleft25"  href="#" [routerLink]="['/dealer','billedcustomer']">Billed Customer ({{billedUnbilledCustomerData?billedUnbilledCustomerData.billed_dealers_no:"0"}})</a>
+                    <a class="btn  btn-primary d-inline btn-sm  d-inline   mr-3 borderRadius5 ml-2 marginleft25"  href="#" [routerLink]="['/dealer', 'unbilledcustomer']">UnBilled Customer ({{billedUnbilledCustomerData?billedUnbilledCustomerData.unbilled_dealers_no:"0"}})</a>
+                   </div>	
+                 </div>
+                 <div class="row" style="display:none">
+                   <div class="col-md-5 m-3">
+                    <canvas id="billedcusterchart" width="30" height="30"></canvas>
+                    <!--<canvas baseChart width="30" height="30"
+                    [datasets]="lineChartData"
+                    [labels]="lineChartLabels"
+                    [options]="lineChartOptions"
+                    [colors]="lineChartColors"
+                    [legend]="lineChartLegend"
+                    [chartType]="lineChartType"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"></canvas>-->
+                   </div>
+                   <div class="col-md-6">
+                     <div class="row">
+                       <div class="col-md-12">
+
+                       </div>
+                       <div class="row">
+                        <div class="col-md-12 mb-4 mt-4">
+                          <span  class="float-end fontSizeRsm c_gray" style="margin-right: 25px;">Count</span>
+                       </div>
+                          <div class="col-md-12 mb-4">
+                             <span class="float-start fontSizeR mt-3">Non-Billed Customer</span>
+                             <span  class="float-end fontSizeR homeBillNbcount nonbilled">{{lineChartData[0].data && lineChartData[0].data.length>1?lineChartData[0].data[1]:"0"}}</span>
+                          </div>
+                          <div class="col-md-12">
+                            <span class="float-start fontSizeR mt-3">Billed Customer</span>
+                            <span  class="float-end fontSizeR homeBillNbcount billed">{{lineChartData[0].data && lineChartData[0].data.length>1?lineChartData[0].data[0]:"0"}}</span>
+                         </div>
+                      </div>
+                     </div>
+                    
+                  </div>
+
+                 </div>
+ 							 </div>
+                              </div>
+ 							</div>
+                          </div>
+                      </div>
+                     
+                </div>
+                
+                
+                
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="bg-white mb-4 info_box shadow-sm rounded-3"  style="height:400px">
+                               <div class="p-3 pt-2 pb-2 border-bottom dashHomeBorderBottom">
+                                <div class="row">
+                                  <div class="col-md-12"> 
+                    <div class="info_box_header row "> 
+                     <div class="fontSizeLg fw600 mb-2 col-md-9 dashHomefontSize18px dashHomeWidColor" style="padding-top: 8px;">Pending Orders Dealers (60)</div> 
+                                  
+                                  <div class=" col-md-3 ">
+                                    <div class="float-end"> 
+                                     <select class="form-select fontSizeXs dashHomeSelect dashHomeWid" aria-label="Default select example" [(ngModel)]="selectedMonthPendingOrder" (change)="getPendingOrders()">
+                                      <option *ngFor="let month of monthList;let indexOfelement=index" value="{{indexOfelement}}" >{{month}}</option>
+                                      </select>
+                                    </div>
+     
+                                  </div>	
+                    </div>
+                                   </div>
+                    </div>
+                               </div>
+                            
+                            <div class="row">
+                             <div class="col-md-12"> 
+							    <div class="info_box_content ">
+                             <div class="px-3 pt-2">
+                              <div class="row">
+                                <div class="col-md-8">
+                                <p class="c_gray fontSizeRsm">Last Refresh Time: {{pendingOrderLastRefreshTime | date:'MM/dd/yyyy hh:mm:ss a'}}</p>
+                                </div> 
+                                <div class="col-md-4 text-right">
+                                <p class="c_gray fontSizeRsm curPointer" (click)="getPendingOrders()"><i class="fa fa-refresh  bg_orange fs-md" style="font-size: 11px !important;"></i> Refresh</p>
+                                </div>
+                                </div>
+                             </div>
+                             
+                            <div class="dashHomeTable" style="width: 100%;overflow: auto;">
+                              <table class="table fixheader" style="width: 150% !important;">
+                                <thead>
+                              <tr class="table-secondary">
+                                <th scope="col" >Code</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Pend (MT)</th>
+                                <th scope="col">Source</th>
+                                <th scope="col">Product</th>
+                                <th scope="col">Total Qty</th>
+                                <th scope="col">Ord ID</th>
+                                <th scope="col">Ord Date</th>
+                              </tr>
+                            </thead>
+                            <tbody style="max-height:250px;" slimScroll [options]="opts">
+                              <tr *ngFor="let list of pendingOrders" style="table-layout:fixed">
+                                <td scope="row">{{list.dealerId}}</td>
+                                <td >{{list.dealerName}}</td>
+                                <td >{{list.pendingQty?list.pendingQty:""}}</td>
+                                <td >{{list.plantCode?list.plantCode:""}}</td>
+                                <td >{{list.product?list.product:""}}</td>
+                                <td >{{list.quantity?list.quantity:""}}</td>
+                                <td >{{list.orderNumber?list.orderNumber:""}}</td>
+                                <td >{{list.creationTime | date:'dd-MM-yyyy'}} L</td>
+                              </tr>
+                              <tr *ngIf="!pendingOrders||pendingOrders.length==0">
+                               <td scope="row" colspan="8" style="text-align: center;">Data Not Found</td>
+                              </tr>
+                            </tbody>
+                          
+                            </table>
+                            </div>
+ 							 </div>
+                              </div>
+ 							</div>
+                          </div>
+                      </div>
+                      
+                      <div class="col-md-6">
+                        <div class="bg-white mb-4 info_box shadow-sm rounded-3"  style="height:400px">
+                          <div class="p-3 pt-2 pb-2 border-bottom dashHomeBorderBottom">
+                           <div class="row">
+                             <div class="col-md-12"> 
+               <div class="info_box_header row "> 
+                <div class="fontSizeLg fw600 mb-2 col-md-9 dashHomefontSize18px dashHomeWidColor" style="padding-top: 8px;">Total Outstanding - Collection</div> 
+                             
+                             <div class=" col-md-3 ">
+                               <div class="float-end"> 
+                                <select class="form-select fontSizeXs dashHomeSelect dashHomeWid" aria-label="Default select example" [(ngModel)]="selectedMonthoutstanding" (change)="getTotalOutstanding()">
+                                  <option *ngFor="let month of monthList;let indexOfelement=index" value="{{indexOfelement}}" >{{month}}</option>
+                                  </select>
+                               </div>
+
+                             </div>	
+               </div>
+                              </div>
+               </div>
+                          </div>
+                       
+                       <div class="row">
+                        <div class="col-md-12"> 
+          <div class="info_box_content ">
+                        <div class="px-3 pt-2">
+                         <div class="row">
+                           <div class="col-md-8">
+                           <p class="c_gray fontSizeRsm">Last Refresh Time: {{outstandingLastRefreshTime | date:'MM/dd/yyyy hh:mm:ss a'}}</p>
+                           </div> 
+                           <div class="col-md-4 text-right">
+                           <p class="c_gray fontSizeRsm curPointer" (click)="getTotalOutstanding()"><i class="fa fa-refresh  bg_orange fs-md" style="font-size: 11px !important;"></i> Refresh</p>
+                           </div>
+                           </div>
+                        </div>
+                        
+                       <div class="dashHomeTable" >
+                         <table class="table fixheader">
+                           <thead>
+                         <tr class="table-secondary">
+                           <th scope="col" style="width:15%">Code</th>
+                           <th scope="col" style="width:25%">Name</th>
+                           <th scope="col" style="width:15%">Out.Amt.</th>
+                           <th scope="col" style="width:12%">Overdue</th>
+                           <th scope="col" style="width:18%">L Coll. Date</th>
+                           <th scope="col" style="width:15%">L Coll. Amt</th>
+                         </tr>
+                       </thead>
+                       <tbody style="max-height:250px;" slimScroll [options]="opts">
+                         <tr *ngFor="let list of outstandingData" style="table-layout:fixed">
+                           <td scope="row"  style="width:15%">{{list.dealerId}}</td>
+                           <td style="width:25%">{{list.dealerName}}</td>
+                           <td style="width:15%">{{list.outstanding}} L</td>
+                           <td style="width:12%">{{list.overdueAmount?list.overdueAmount:""}}</td>
+                           <td style="width:18%">{{list.lastCollDate?list.lastCollDate:""}}</td>
+                           <td style="width:15%">{{list.lastCollAmount?list.lastCollAmount:""}} L</td>
+                           <!--<td> <i class="pr-4DIB dashHomeGreen"><img src="assets/images/phone-ic.svg" height="16"/></i></td>-->
+                         </tr>
+                         <tr *ngIf="!outstandingData||outstandingData.length==0">
+                          <td scope="row" colspan="6" style="text-align: center;">Data Not Found</td>
+                         </tr>
+                       </tbody>
+                     
+                       </table>
+                       </div>
+           </div>
+                         </div>
+          </div>
+                     </div>
+                      </div>
+
+
+                      <div class="col-md-6">
+                        <div class="bg-white mb-4 info_box shadow-sm rounded-3"  style="height:400px">
+                               <div class="p-3 pt-2 pb-2 border-bottom dashHomeBorderBottom">
+                                <div class="row">
+                                  <div class="col-md-12"> 
+                    <div class="info_box_header row "> 
+                     <div class="fontSizeLg fw600 mb-2 col-md-9 dashHomefontSize18px dashHomeWidColor" style="padding-top: 8px;">
+                      
+                        <div class="">
+                          <a class="btn d-inline btn-sm d-inline   mr-3 borderRadius5 ml-2"  [ngClass]="{'btn-primary ':dealerType=='churn','btn-bordered-gray ':dealerType=='blockdealer'}" (click)="getRefreshChurnorBlockedDealer('churn')">CHURN DEALERS</a>
+                          <a class="btn d-inline btn-sm  d-inline   mr-3 borderRadius5 ml-2 marginleft25" [ngClass]="{'btn-primary ':dealerType=='blockdealer','btn-bordered-gray':dealerType=='churn'}"  (click)="getRefreshChurnorBlockedDealer('blocked')">CREDIT BLOCK DEALERS</a>
+                         
+                         </div>	
+                    </div> 
+                                  
+                                  <div class=" col-md-3 ">
+                                    <div class="float-end"> 
+                                     
+                                    </div>
+     
+                                  </div>	
+                    </div>
+                                   </div>
+                    </div>
+                               </div>
+                            
+                            <div class="row">
+                             <div class="col-md-12"> 
+							                <div class="info_box_content ">
+                             <div class="px-3 pt-2">
+                                <div class="row">
+                                  <div class="col-md-8">
+                                  <p class="c_gray fontSizeRsm" >Last Refresh Time: {{churnorBlockDealerRefreshTime | date:'MM/dd/yyyy hh:mm:ss a'}}</p>
+                                  </div> 
+                                  <div class="col-md-4 text-right">
+                                  <p class="c_gray fontSizeRsm curPointer" (click)="getRefreshChurnorBlockedDealer('')"><i class="fa fa-refresh  bg_orange fs-md" style="font-size: 11px !important;"></i> Refresh</p>
+                                  </div>
+                                </div>
+                             </div>
+
+                             <div class="px-3 pb-2">
+                              <div class="info_box_header row "> 
+                                <div class="fontSizeLg fw600 mb-2 col-md-12 dashHomefontSize18px dashHomeWidColor" style="padding-top: 8px;">
+                                 <div class="">
+                                  <div class="dashHomeFontSize16B" *ngIf="dealerType=='churn'">Churn Dealers - {{churnorBlocedDealerCount}}</div>
+                                  <div class="dashHomeFontSize16B" *ngIf="dealerType=='blockdealer'">Credit Blocked Dealers - {{churnorBlocedDealerCount}}</div>
+                                   </div>
+
+                               </div> 
+                                             
+                                             <div class=" col-md-3 " style="display:none">
+                                               <div class="float-end"> 
+                                                <select class="form-select fontSizeXs dashHomeSelect dashHomeWid" aria-label="Default select example" [(ngModel)]="selectedMonthchurnDealer" (change)="getRefreshChurnorBlockedDealer('')">
+                                                  <option *ngFor="let month of monthList;let indexOfelement=index" value="{{indexOfelement}}" >{{month}}</option>
+                                                  </select>
+                                               </div>
+                
+                                             </div>	
+                               </div>
+                             </div>
+                             
+                            <div class="dashHomeTable2">
+                              <table class="table fixheader">
+
+                            <tbody style="max-height:250px;" slimScroll [options]="opts">
+                             
+                              <tr *ngFor="let list of churnorBlockDealer">
+                                <td scope="row">{{list.partyCode?list.partyCode:list.dealerId}} - {{list.partyName?list.partyName:list.dealerName}}<i class="statusIcon gstatus">C</i></td>
+                                <td class=" text-center pr-411" *ngIf="!hidecall">
+                                  <i class="pr-4DIB dashHomeGreen"><img src="assets/images/phone-ic.svg" height="16"/></i>
+                                </td>
+                              </tr>
+                              <tr *ngIf="!churnorBlockDealer||churnorBlockDealer.length==0">
+                                <td scope="row" colspan="3" style="text-align: center;">Data Not Found</td>
+                               </tr>
+                               
+                            </tbody>
+                          
+                            </table>
+                            </div>
+ 							 </div>
+                              </div>
+ 							</div>
+                          </div>
+                      </div>
+
+
+                      <div class="col-md-6" style="display: none;">
+                        <div class="bg-white mb-4 info_box shadow-sm rounded-3"  style="height:400px">
+                          <div class="p-3 pt-2 pb-2 border-bottom dashHomeBorderBottom">
+                           <div class="row">
+                             <div class="col-md-12"> 
+               <div class="info_box_header row "> 
+                <div class="fontSizeLg fw600 mb-2 col-md-9 dashHomefontSize18px dashHomeWidColor" style="padding-top: 8px;">Other Actions- Ph2</div> 
+                             
+                             <div class=" col-md-3 ">
+                               <div class="float-end"> 
+
+                               </div>
+
+                             </div>	
+               </div>
+                              </div>
+               </div>
+                          </div>
+                       
+                       <div class="row" >
+                        <div class="col-md-12"> 
+          <div class="info_box_content ">
+
+                        
+                      <div class="p-3">
+                        <div class="row">
+                          <div class="col-md-8">
+                            <div class="d-grid gap-2 mb-3">
+                              <a class="btn btn-primary btn-green-color1 d-inline btn-sm mr-3 w-100" href="#">No of active dealers</a>
+                            </div>
+
+                            <div class="d-grid gap-2 mb-3">
+                              <a class="btn btn-primary btn-green-color1 d-inline btn-sm mr-3" href="#">Top opportunities for today (PH-2)</a>
+                            </div>
+
+                            <div class="d-grid gap-2 mb-3">
+                              <a class="btn btn-primary btn-orange-color1 d-inline btn-sm mr-3" href="#">
+                                <div>Customers contacted till </div>
+                                <div>yesterday but no orders placed</div>
+                              </a>
+                            </div>
+
+                            <div class="d-grid gap-2 mb-3">
+                              <a class="btn btn-primary  d-inline btn-sm mr-3" href="#">
+                                Opportunities for upsell / cross-sell (PH-2)
+                              </a>
+                            </div>
+
+                            <div class="d-grid gap-2 mb-3">
+                              <a class="btn btn-primary btn-darkgreen-color5 d-inline btn-sm mr-3" href="#">
+                                My top performing districts & dealers
+                              </a>
+                            </div>
+
+                            <div class="d-grid gap-2 mb-3">
+                              <a class="btn btn-primary btn-orange-color4 d-inline btn-sm mr-3" href="#">
+                                Unbilled & Churn dealers
+                              </a>
+                            </div>
+                            
+                            
+                          </div>
+                          <div class="col-md-4"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+           </div>
+                         </div>
+          </div>
+                     </div>
+                      </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+        
+     
+
+      
+    </main>
+  </div>
+</div>

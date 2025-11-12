@@ -1,0 +1,35 @@
+tbody {
+    display: block;
+    overflow: auto;
+    width: 100%;
+  }
+  
+  thead tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+  
+  thead, tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+  
+  thead {
+    width: calc( 100% - .25em )
+  }
+  .datetimes{
+    border:1px solid #ced4da;
+    padding:5px;
+    margin:5px;
+    width: 85px;
+    text-align: center;
+  }
+  .borderBlue{
+    border:2px solid #6981FE;
+  }
+  .greybackground{
+    opacity: .5;
+    background-color: #eee;
+  }

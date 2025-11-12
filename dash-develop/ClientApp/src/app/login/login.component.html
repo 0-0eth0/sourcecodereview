@@ -1,0 +1,86 @@
+
+
+<div id="signPage" class="img">
+
+  <div class="" style="width: 712px; margin: auto;">
+    <div style="background-color: #fff;  height: 412px;" class="d-flex align-items-center" *ngIf="!isLoggedIn">
+      <main class="form-signin" *ngIf="!isOTPGenerated">
+        <form name="form" (ngSubmit)="f.form.valid && getRefId()" #f="ngForm" novalidate autocomplete="off">
+          <h5 class="mb-1 fw-welcome text-center"><b>Welcome!</b></h5>
+          <p class="fw-welcome-text text-center">Login to your Dash to Continue</p>
+
+          <!-- <div class="form-floating mb-4">
+            <input type="text"
+                   id="mobilenumber"
+                   class="form-control"
+                   name="mobilenumber"
+                   [(ngModel)]="form.mobilenumber" (keypress)="numberOnly($event)"
+                   required
+                   #mobilenumber="ngModel" placeholder="name@example.com" />
+
+            <label for="mobilenumber">Mobile Number</label>
+            <div class="alert alert-danger"
+                 role="alert"
+                 *ngIf="f.submitted && mobilenumber.invalid">
+              Mobile Number is required!
+            </div>
+          </div> -->
+          <div class="form-floating mb-4">
+            <input type="text"
+                   id="referenceId"
+                   class="form-control"
+                   name="referenceId"
+                   [(ngModel)]="form.referenceId"
+                   required
+                   #referenceId="ngModel" placeholder="Agent ID"
+                   (ngModelChange)="form.referenceId = $event.toUpperCase()"
+                   />
+
+            <label for="referenceId">Agent ID</label>
+            <div class="alert alert-danger"
+                 role="alert"
+                 *ngIf="f.submitted && referenceId.invalid">
+              Agent Id is required!
+            </div>
+          </div>
+          <div class="text-center">
+            <button class="btn btn-primary cta" type="submit">CONTINUE</button>
+          </div>
+        </form>
+      </main>
+      <main class="form-signin" *ngIf="isOTPGenerated">
+        <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onOTPSubmit()" #f="ngForm" novalidate autocomplete="off">
+
+          <h5 class="mb-1 fw-welcome text-center"><b>Welcome!</b></h5>
+          <p class="fw-welcome-text text-center">Login to your Dash to Continue</p>
+
+          <div class="form-floating mb-4">
+            <input type="text"
+                   id="mobileotp"
+                   class="form-control"
+                   name="mobileotp"
+                   [(ngModel)]="form.mobileotp" (keypress)="numberOnly($event)"
+                   required
+                   #mobileotp="ngModel" placeholder="name@example.com" />
+
+            <label for="mobileotp">OTP</label>
+            <div class="alert alert-danger"
+                 role="alert"
+                 *ngIf="f.submitted && mobileotp.invalid">
+              OTP is required!
+            </div>
+          </div>
+          <div class="">
+            <div class="float-start">
+              <button class="btn btn-primary cta" type="button" (click)="onOTPRetry()" [disabled]="!showResendBtn">RESEND OTP</button>
+            </div>
+            <div class="float-end">
+              <button class="btn btn-primary cta" type="submit">CONTINUE</button>
+            </div>
+          </div>
+        </form>
+      </main>
+    </div>
+  </div>
+
+</div>

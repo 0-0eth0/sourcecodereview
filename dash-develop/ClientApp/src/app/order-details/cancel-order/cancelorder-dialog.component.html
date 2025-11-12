@@ -1,0 +1,60 @@
+<div  *ngIf="message" class="modal" tabindex="-1" role="dialog" style="display:block!important;z-index: 1061;">  
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" >
+    <div class="modal-content rounded-0" >
+      <div class="modal-header rounded-0">
+        <h5 class="modal-title fontSizeR fw700" id="exampleModalLabel" *ngIf="actionType=='EDIT'">Please change the quantity and Select reason for update</h5>
+        <h5 class="modal-title fontSizeR fw700" id="exampleModalLabel" *ngIf="actionType=='CANCEL'">Cancelling this order will delete it from the system.</h5>
+      </div>
+      <div class="modal-body" style="padding-top: 0px !important;">
+
+          <div class="row d-flex align-items-center pt-2 pb-2 border-bottom">
+            <div class="col-md-4 fontSizeSm ">Select Product</div>
+            <div class="col-md-8 d-flex align-items-right">
+              <div class="fontSizeSm fw700">{{message.text.orderdata?message.text.orderdata.productName:""}}</div>
+            </div>
+          </div>
+          <div class="row d-flex align-items-center pt-2 pb-2 border-bottom">
+            <div class="col-md-4 fontSizeSm ">Ship to Party</div>
+            <div class="col-md-8 d-flex align-items-right">
+              <div class="fontSizeSm fw700">{{message.text.orderdata?message.text.orderdata.dealerName:""}}</div>
+            </div>
+          </div>
+          <div class="row d-flex align-items-center pt-2 pb-2 border-bottom">
+            <div class="col-md-4 fontSizeSm ">Quantity</div>
+            <div class="col-md-8 d-flex align-items-right">
+              <div class="fontSizeSm fw700" *ngIf="actionType=='CANCEL'">{{message.text.orderdata.quantity?message.text.orderdata.quantity:""}} &nbsp;Tons</div>
+              <div class="float-start" style="width: 80px;" *ngIf="actionType=='EDIT'"><input type="text" class="form-control form-control-sm" placeholder=""  [(ngModel)]="message.text.orderdata.quantity"  numerics decimals="2"></div>
+              <div class="float-start fontSizeXs pl-3 pt-2"  *ngIf="actionType=='EDIT'">&nbsp;Tons</div>
+            </div>
+          </div>
+        <div class="row d-flex align-items-center pt-2 pb-2 border-bottom">
+          <div class="col-md-4 fontSizeSm ">Transport</div>
+          <div class="col-md-8 d-flex align-items-right fw700">{{message.text.orderdata?message.text.orderdata.udf2:""}}</div>
+        </div>
+        <div class="row d-flex align-items-center pt-2 pb-2 border-bottom">
+          <div class="col-md-4 fontSizeSm ">Order From</div>
+          <div class="col-md-8 d-flex align-items-right fw700">{{message.text.orderdata?message.text.orderdata.orderFrom:""}}</div>
+        </div>
+      <input type="hidden"  [(ngModel)]="cancelReasonid" value="" *ngIf="actionType=='EDIT'">
+      <input type="hidden"  [(ngModel)]="cancelReason" *ngIf="actionType=='EDIT'">
+        <div class="row d-flex align-items-center pt-2 pb-2 border-bottom"  *ngIf="actionType=='CANCEL'">
+          <div class="col-md-4 fontSizeSm ">Reason</div>
+          <div class="col-md-8 d-flex align-items-right fw700">
+            <select class="form-select rounded-1" aria-label="SELECT REASON FOR UPDATE" (change)="selectChangeHandler($event)" [(ngModel)]="cancelReasonid">
+              <option value="" selected>SELECT REASON FOR UPDATE</option>
+              <option *ngFor="let list of orderReasons" value="{{list.reasonId}}">{{list.reason}}</option>
+            </select>
+        </div>
+        </div>
+        <div class="row d-flex align-items-center pt-2 pb-2 "  *ngIf="actionType=='CANCEL'">
+          <textarea name="notes" rows="2" class="form-control" [(ngModel)]="cancelReason"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-light btn-orange-color-without-solid float-start" (click)="message.noFn()">Cancel</button>
+        <button  type="button" class="btn btn-primary "  (click)="cancelOrder()"  *ngIf="actionType=='EDIT' &&  calculateDiff(message.text.orderdata.orderDate)<8">Confirm Order</button>
+        <button  type="button" class="btn btn-primary "  (click)="cancelOrder()"  *ngIf="actionType=='CANCEL' &&  calculateDiff(message.text.orderdata.orderDate)<8">Cancel Order</button>
+      </div>
+    </div>
+  </div>
+</div>  

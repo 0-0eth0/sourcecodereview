@@ -1,0 +1,100 @@
+<div *ngIf="data" class="modal" tabindex="-1" role="dialog" style="display:block!important">  
+    <div class="modal-dialog  call_log_model" role="document"  >  
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title dlg-title-h5" id="exampleModalLabel"><i class="fa fa-phone c_green "></i> {{dealerName}}</h5>
+          <p class="c_gray fontSize16" style="padding-left: 20px;">{{lastCallDateTime  | date:'dd MMM yyyy'}} | {{lastCallDateTime  | date:'HH:mm'}}  | Call ID:{{lastCallId}}</p>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"  (click)="data.okFn()"></button>
+        </div>
+        <div class="modal-body">
+          <form name="form" (ngSubmit)="f.form.valid && saveData()" #f="ngForm" novalidate autocomplete="off">
+             <div class="row">
+                 <div class="col-md-6" *ngIf="formData && formData.notesCheckboxList">
+                   <div class="row">
+                     <input type="hidden" name="callid" [(ngModel)]="form.callid">
+                     <input type="hidden" name="save_note_id" [(ngModel)]="form.save_note_id">
+                     
+                     <div  class="mb-2">
+                        <div class="form-check form-check-inline col-md-12" >
+                          <input name="chk_CK0006" class="form-check-input" type="checkbox" id="CK0006" value="CK0006"  (change)="isAllSelected('CK0006',$event)"  [(ngModel)]="form.CK0006" >
+                          <label class="form-check-label ch-val" for="CK0006">Order Discussion</label>
+                        </div>
+                        <select  name="select_CK0006" class="form-select calllogselect rounded-1" aria-label="Default select example" *ngIf="form.CK0006"  [(ngModel)]="form.select_CK0006" >
+                          <option value="">Select Reason</option>
+                          <option *ngFor="let ctrl of formData.orderDiscussionList" value="{{ctrl.orderDiscussionId}}" >{{ctrl.orderDiscussionText}}</option>
+                        </select>
+                        <div class="form-check form-check-inline col-md-12" >
+                          <input name="chk_CK0002" class="form-check-input" type="checkbox" id="CK0002" value="CK0002"  (change)="isAllSelected('',$event)"  [(ngModel)]="form.CK0002" >
+                          <label class="form-check-label ch-val" for="CK0002">Complaint & SR</label>
+                        </div>
+                        <select  name="select_CK0002" class="form-select calllogselect rounded-1" aria-label="Default select example" *ngIf="form.CK0002"  [(ngModel)]="form.select_CK0002" >
+                          <option value="">Select Reason</option>
+                          <option *ngFor="let ctrl of formData.complaintSrList" value="{{ctrl.complaintSrId}}" >{{ctrl.complaintSrText}}</option>
+                        </select>
+                        <div class="form-check form-check-inline col-md-12" >
+                          <input name="chk_CK0001" class="form-check-input" type="checkbox" id="CK0001" value="CK0001"  (change)="isAllSelected('CK0001',$event)"  [(ngModel)]="form.CK0001" >
+                          <label class="form-check-label ch-val" for="CK0001">Non-billing & Churn</label>
+                        </div>
+                        <select  name="select_CK0001" class="form-select calllogselect rounded-1" aria-label="Default select example" *ngIf="form.CK0001"  [(ngModel)]="form.select_CK0001" >
+                          <option value="">Select Reason</option>
+                          <option *ngFor="let ctrl of formData.nonBillingReasonList" value="{{ctrl.reasonId}}" >{{ctrl.reasonDesc}}</option>
+                        </select>
+                        <div class="form-check form-check-inline col-md-12" >
+                          <input name="chk_CK0004" class="form-check-input" type="checkbox" id="CK0004" value="CK0004"  (change)="isAllSelected('',$event)"  [(ngModel)]="form.CK0004" >
+                          <label class="form-check-label ch-val" for="CK0004">OutStanding & Collection</label>
+                        </div>
+                        <select  name="select_CK0004" class="form-select calllogselect rounded-1" aria-label="Default select example" *ngIf="form.CK0004"  [(ngModel)]="form.select_CK0004" >
+                          <option value="">Select Reason</option>
+                          <option *ngFor="let ctrl of formData.outstandingCollectionList" value="{{ctrl.outstandingCollectionId}}" >{{ctrl.outstandingCollectionText}}</option>
+                        </select>
+                        <div class="form-check form-check-inline col-md-12" >
+                          <input name="chk_CK0003" class="form-check-input" type="checkbox" id="CK0003" value="CK0003"  (change)="isAllSelected('',$event)"  [(ngModel)]="form.CK0003" >
+                          <label class="form-check-label ch-val" for="CK0003">Scheme</label>
+                        </div>
+                        <select  name="select_CK0003" class="form-select calllogselect rounded-1" aria-label="Default select example" *ngIf="form.CK0003"  [(ngModel)]="form.select_CK0003" >
+                          <option value="">Select Reason</option>
+                          <option *ngFor="let ctrl of formData.dashSchemeList" value="{{ctrl.dashSchemeId}}" >{{ctrl.dashSchemeText}}</option>
+                        </select>
+                        <div class="form-check form-check-inline col-md-12" >
+                          <input name="chk_CK0005" class="form-check-input" type="checkbox" id="CK0005" value="CK0005"  (change)="isAllSelected('',$event)"  [(ngModel)]="form.CK0005" >
+                          <label class="form-check-label ch-val" for="CK0005">Others</label>
+                        </div>
+                        <select  name="select_CK0005" class="form-select calllogselect rounded-1" aria-label="Default select example" *ngIf="form.CK0005"  [(ngModel)]="form.select_CK0005" >
+                          <option value="">Select Reason</option>
+                          <option *ngFor="let ctrl of formData.dashOthersList" value="{{ctrl.dashOthersId}}" >{{ctrl.dashOthersText}}</option>
+                        </select>
+                        <div class="form-check form-check-inline col-md-12" >
+                          <input name="chk_CK0007" class="form-check-input" type="checkbox" id="CK0007" value="CK0007"    [(ngModel)]="form.CK0007" >
+                          <label class="form-check-label ch-val" for="CK0007">{{formData.priceCapture}}</label>
+                        </div>
+                        <a name="select_CK0007" class="fontSizeSm fw600 primaryColor curPointer" aria-label="Default select example" *ngIf="form.CK0007"   >
+                          <span style="padding-left:21px" (click)="callPriceCaptureDlg()">Dalmia and others&nbsp; <i class="fa fa-angle-right" style="font-size:14px;"></i></span>
+                        </a>
+    
+                     </div>
+                    
+                   </div>
+                 </div>
+                 <div class="col-md-6">
+                  <div class="row">
+                    <div class="col-md-12 mb-3">
+                     <label class="form-check-label ch-val" for="CK0006">Next Followup date</label>
+                      <input type="date" class="form-control" name="nextFollowupDate" [(ngModel)]="form.nextFollowupDate"  #nextFollowupDate="ngModel" value="form.nextFollowupDate">
+                      </div>
+                    <div class="col-md-12 mb-3">
+                      <textarea name="notes" rows="5" class="form-control" [(ngModel)]="form.notes"   #notes="ngModel"></textarea>
+                      </div>
+                  </div>
+                </div>
+              </div>
+          <div class="row">
+               <div class="col-md-12">
+          <div class="text-center"><button class="btn btn-primary " type="submit" >Submit</button>
+                 </div>
+           </div>
+           </div>
+          </form>
+             </div>
+      </div>  
+    </div>
+</div>  

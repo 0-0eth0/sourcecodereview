@@ -1,0 +1,102 @@
+<div class="bg-white p-4 mb-4  shadow-sm rounded-3">
+  <div class="row">
+   <div class="col-md-12s mb-3">
+                  <div class="fontSizeLg fw600 mb-2">Collection Overview</div>
+   </div>
+    
+   </div>
+    
+   
+                  <div class="row border-bottom pb-2">
+                  <div class="col-md-3">
+                    <canvas baseChart width="50" height="50"
+                    [datasets]="lineChartData"
+                    [labels]="lineChartLabels"
+                    [options]="lineChartOptions"
+                    [colors]="lineChartColors"
+                    [legend]="lineChartLegend"
+                    [chartType]="lineChartType"
+                    (chartHover)="chartHovered($event)"
+                    (chartClick)="chartClicked($event)"></canvas>
+</div>
+     <div  class="col-md-9 row">
+      <div class="col-md-3">
+        <div class="ch-lbl">Credit Limit</div>
+        <div class="ch-val">	₹ {{dealerCheatSheetData && dealerCheatSheetData.creditLimit?dealerCheatSheetData.creditLimit:"0"}} L</div>
+        
+        <div class="ch-lbl mt-4">Credit Utilized</div>
+        <div class="ch-val">{{(dealerCheatSheetData && dealerCheatSheetData.creditLimit>0?((dealerCheatSheetData.outstanding/dealerCheatSheetData.creditLimit)*100):0 ) | number:'0.0-2'}}%</div>
+        
+        </div>
+        
+        <div class="col-md-3">
+        <div class="ch-lbl">Overdue</div>
+        <div class="fw-bold">₹ {{dealerCheatSheetData && dealerCheatSheetData.overdueAmount?dealerCheatSheetData.overdueAmount:"0"}} L</div>
+        
+        <div class="ch-lbl mt-4">Pay terms</div>
+        <div class="fw-bold">{{dealerCheatSheetData && dealerCheatSheetData.creditPeriod?dealerCheatSheetData.creditPeriod:"0"}} Days</div>
+        
+        </div>
+        
+        <div class="col-md-3">
+        <div class="ch-lbl">Total Outstanding</div>
+        <div class="ch-val">₹ {{dealerCheatSheetData && dealerCheatSheetData.outstanding?dealerCheatSheetData.outstanding:"0"}} L</div>
+        
+        <div class="ch-lbl mt-4">Balance</div>
+        <div class="ch-val">	₹ {{(dealerCheatSheetData && dealerCheatSheetData.creditLimit>0?((dealerCheatSheetData.creditLimit-dealerCheatSheetData.outstanding)):0 ) | number:'0.0-2'}} L</div>
+        
+        </div>
+        <div class="col-md-3">
+          <div class="ch-lbl">Last Coll Date</div>
+          <div class="ch-val">{{dealerCheatSheetData && dealerCheatSheetData.lastCollDate?dealerCheatSheetData.lastCollDate:""}}</div>
+          
+          <div class="ch-lbl mt-4">Last Coll Amt</div>
+          <div class="ch-val">₹ {{dealerCheatSheetData && dealerCheatSheetData.lastCollAmount?dealerCheatSheetData.lastCollAmount:""}} L</div>
+          
+          </div>
+     </div>
+     
+
+                  </div>
+                  
+   
+   <div class="row">
+                     <div class="col-md-12 mb-4">
+     <div class="mt-4">
+     <div class="row" style="display: none;">
+       <div class="col-md-12">
+                          <div class="mb-">Last 5 CD Slab(Ph-2)</div>
+                       </div>
+       </div>
+                     
+                     <div class="row mt-4" style="display: none;">
+       <div class="col-md-2">
+                      <a class="btn btn-bordered-gray fontSizeSm fontGray">&#8377; 5 Feb</a>
+                        </div>
+                         <div class="col-md-2">
+                      <a class="btn btn-bordered-gray fontSizeSm fontGray">&#8377; 3 Mar</a>
+                        </div>
+                         <div class="col-md-2">
+                      <a class="btn btn-bordered-gray fontSizeSm fontGray">&#8377; 7 Apr</a>
+                        </div>
+                         <div class="col-md-2">
+                      <a class="btn btn-bordered-gray fontSizeSm fontGray">&#8377; 5 May</a>
+                        </div>
+                         <div class="col-md-2">
+                      <a class="btn btn-bordered-gray fontSizeSm fontGray">&#8377; 5 June</a>
+                        </div>
+       </div>
+                     <div class="row mt-4">
+                     <div class="col-md-12">
+        <a class="btn btn-bordered fontCap">Colletion Summary <i class="fa fa-angle-right"></i></a>
+        <a class="btn btn-bordered fontCap mx-4" (click)="getCompanyWiseAging()">Aging Outstanding <i class="fa fa-angle-right"></i></a>
+                       </div>
+                       
+                       
+                       
+
+                       </div>
+       </div>
+      </div>
+                 </div>
+              </div>

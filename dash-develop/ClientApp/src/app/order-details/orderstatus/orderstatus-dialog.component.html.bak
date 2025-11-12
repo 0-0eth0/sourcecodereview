@@ -1,0 +1,104 @@
+<div *ngIf="message" class="modal" tabindex="-1" role="dialog" style="display:block!important">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content rounded-0">
+      <div class="modal-body" style="overflow-y: auto;overflow-x:hidden;">
+        <div class="row"  *ngIf="ContentType=='product'">
+          <div class="col-md-6 bg-white p-4 shadow-sm rounded-3">
+            <div class="row ">
+              <div class="fontSize fw700">ORDER ID: {{message.text.orderdata?message.text.orderdata.orderNumber:""}}</div>
+              <div class="fontSizeXs fw700">{{message.text.orderdata?message.text.orderdata.orderDate:""}}</div>
+            </div>
+            <div class="row border-bottom" >
+              <nav class="nav p-2">
+                <a *ngFor="let list of message.text.statusdata;let indexOfelement=index;" (click)="selectShipment(indexOfelement)" class="btn btn-bordered1 mx-1" [ngClass]="{'btn-bordered1active': indexOfelement==this.selectedIndex }"  aria-current="page" >Shipment {{indexOfelement+1}}</a>
+              </nav>
+            </div>
+            <div class="row" style="height: 202px;overflow: auto;">
+              <div class="mt-2">
+                <ul class="StepProgress">
+                  <li *ngFor="let list of selectedShipment.statusList" class="StepProgress-item" [ngClass]="{' is-done': list.datetime, '' : !list.datetime }" ><strong>{{list.status}}  {{list.datetime?"("+list.datetime+")":""}}</strong></li>
+                </ul>
+              </div>
+            </div>
+            
+            <!--<div class="pb-3" style="text-align: right;" sty>
+              <span (click)="confirmepod(selectedShipment.invoiceNo)" style="cursor:pointer;color: #0d6efd;">Confirm ePod <span class="fas fa-angle-right"></span></span>
+            </div> -->
+            
+            <div class="row pb-3 pt-3" [hidden]="selectedShipment.status!='DELIVERED'">
+            
+              <div [hidden]="selectedShipment.status!='DELIVERED'" class="col-md-5" >
+                <span class="btn btn-bordered btn-smc btn-sm float-start"  (click)="viewTrackingMap(selectedShipment.invoiceNo)" style="cursor:pointer;color: #0d6efd;">View On Map</span>
+              </div>
+              <div [hidden]="selectedShipment.status!='DELIVERED'" class="col-md-7">
+                <span  class="btn btn-bordered btn-smc btn-sm float-end" (click)="downloadinvoice(selectedShipment.invoiceNo)" style="cursor:pointer;color: #0d6efd;">Download Invoice</span>
+                </div>
+            </div>
+            <div class="row pb-3 pt-3" *ngIf="(selectedShipment.status=='PLACED' || selectedShipment.status=='CONFIRMED')">
+            <div>
+              <div  class="float-start">
+                <span  class="btn btn-bordered btn-smc btn-sm" (click)="editCancelOrder('CANCEL')" style="cursor:pointer;color: #0d6efd;">CANCEL ORDER</span>
+                </div>
+                <div class="float-end" >
+                  <span class="btn btn-bordered btn-smc btn-sm"  (click)="editCancelOrder('EDIT')" style="cursor:pointer;color: #0d6efd;">EDIT ORDER</span>
+                </div>
+            </div>
+            </div>
+            <div class="row d-flex align-items-center pt-2 pb-2 border mb-2 bg-white">
+              <div class="col-md-8 fontSizeSm ">Call Driver {{selectedShipment.driverName? (selectedShipment.driverName):""}}</div>
+              <div class="col-md-4 d-flex align-items-right fw700">{{selectedShipment.driverMobNumber?selectedShipment.driverMobNumber:""}}</div>
+            </div>
+          </div>
+          <div class="col-md-6 bg-whitesmoke  shadow-sm rounded-3">
+            <div class="modal-header rounded-0">
+              <h5 class="modal-title fontSizeR fw700" id="exampleModalLabel"></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="message.yesFn()"></button>
+            </div>
+
+            <div class="fontSizeLg fw600 border-bottom mb-2">Order Info</div>
+            <div class=" d-flex  pt-2 pb-2 border-bottom">
+              <div class="fontSizeSm ">
+                <img width="37" height="52" src="{{message.text.orderdata?message.text.orderdata.ImageName:''}}"/>
+              </div>
+              <div class=" align-items-right fw700">
+                <div class="p-2 ">
+                  <div class="fontSize fw700">{{message.text.orderdata?message.text.orderdata.productName:""}}</div>
+                  <div class="fontSizeXs fw700">Total {{message.text.orderdata?message.text.orderdata.quantity:""}} tons</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row d-flex align-items-center pt-2 pb-2 ">
+              <div class="col-md-4 fontSizeSm ">Ship to party</div>
+              <div class="col-md-8 d-flex align-items-right fw700">{{message.text.orderdata?message.text.orderdata.dealerName:""}}</div>
+            </div>
+            <div class="row d-flex align-items-center pt-2 pb-2  mb-2">
+              <div class="col-md-4 fontSizeSm ">Order From</div>
+              <div class="col-md-8 d-flex align-items-right fw700">{{message.text.orderdata?message.text.orderdata.orderFrom:""}}</div>
+            </div>
+            <div class="row d-flex align-items-center pt-2 pb-2 border-bottom">
+              <div class="col-md-4 fontSizeSm ">Transport</div>
+              <div class="col-md-8 d-flex align-items-right fw700">{{message.text.orderdata?message.text.orderdata.udf2:""}}</div>
+            </div>
+            <div class="row d-flex align-items-center pt-2 pb-2 border-bottom mb-2">
+              <div class="col-md-4 fontSizeSm ">Order Type</div>
+              <div class="col-md-8 d-flex align-items-right fw700">{{selectedShipment?selectedShipment.isDepotPlant:""}}</div>
+            </div>
+            
+            <div class="row d-flex align-items-center pt-2 pb-2 border mb-2 bg-white">
+              <div class="col-md-8 fontSizeSm ">Contact Sales Officer</div>
+              <div class="col-md-4 d-flex align-items-right fw700"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row" *ngIf="ContentType=='map'">
+          <div class="modal-header rounded-0">
+            <h5 class="modal-title fontSizeR fw700" id="exampleModalLabel"></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="message.yesFn()"></button>
+          </div>
+          <viewmap [selectedinvoice]="selectedShipment.invoiceNo"></viewmap>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

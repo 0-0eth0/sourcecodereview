@@ -1,0 +1,26 @@
+<div *ngIf="message"  class="modal" tabindex="-1" role="dialog" style="display:block!important">  
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content rounded-0">
+        <div class="modal-header rounded-0">
+           
+        </div>
+        <div class="modal-body" style="overflow-y: auto;">
+          
+
+<div class="row text-center">
+  <mat-card>
+    <mat-calendar [selected]="selectedDate" (selectedChange)="onSelect($event)"  [minDate]="minDate"></mat-calendar>
+  </mat-card>
+</div>
+<br>
+ 
+
+<br><br><br>
+        </div>
+        <div class="modal-footer">
+          <!--<button type="button" class="btn btn-outline-light btn-orange-color-without-solid float-start" (click)="message.noFn()">Cancel</button>-->
+          <button type="button" class="btn btn-primary " data-bs-dismiss="modal" (click)="message.yesFn()">Select</button>
+        </div>
+      </div>
+    </div>
+</div>  

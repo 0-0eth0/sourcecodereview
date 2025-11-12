@@ -1,0 +1,305 @@
+<div *ngIf="orderStage == 'view'">
+  <div class="bg-white p-4 mb-4  shadow-sm rounded-3">
+							<div class="row">
+								<div>
+								<div class="float-start">
+									<div class="fontSizeSm fw500 mb-0">Accounts:</div>
+									<div class="fontSizeLg fw600 mb-2">{{dealerData.dealerList!=null ? dealerData.dealerList[0].dealerName + "  ("+ dealerData.dealerList[0].dealerId +")":""}}<i class="statusIcon gstatus">C</i></div>
+									<div class="fontSizeSm fw500 mb-1">{{dealerData && dealerData.blockedReason?dealerData.blockedReason:""}}</div>
+								</div>
+								<!--<div class="float-end">
+									<button class="btn btn-primary btn-sm mt-3"  (click)="newOrder()">PLACE NEW ORDER</button>
+								</div>-->
+							</div>
+							</div>
+                            <div class="row">
+								<div class="col-md-3">
+									<circle-progress [percent]="dealerCheatSheetData && dealerCheatSheetData.mtdSale>0 && dealerCheatSheetData.salesTarget>0 ?((dealerCheatSheetData.mtdSale/dealerCheatSheetData.salesTarget)*100):0"
+													 [radius]="50"
+													 [outerStrokeWidth]="11"
+													 [innerStrokeWidth]="11"
+													 [outerStrokeColor]="'#0054A6'"
+													 [innerStrokeColor]="'#DDDDDD'"
+													 [animation]="true"
+													 [showTitle]="true"
+													 [showUnits]="true"
+													 [showSubtitle]="true"
+													 [titleColor]="'#0054A6'"
+													 [title]=""
+													 [subtitle]=""
+													 [animationDuration]="300"></circle-progress>
+        
+                              </div>
+							  <div class="col-md-3">
+								<div class="ch-lbl">Month Target</div>
+								<div class="ch-val">{{dealerCheatSheetData && dealerCheatSheetData.salesTarget?dealerCheatSheetData.salesTarget:""}} MT</div>
+   								<div class="ch-lbl mt-4">MTD Target</div>
+								<div class="ch-val">{{dealerCheatSheetData && dealerCheatSheetData.mtdTarget?dealerCheatSheetData.mtdTarget:""}} MT</div>
+   							  </div>
+							  <div class="col-md-3">
+								<div class="ch-lbl">Actual Sales</div>
+								<div class="ch-val">{{dealerCheatSheetData && dealerCheatSheetData.mtdSale?dealerCheatSheetData.mtdSale:""}} MT</div>
+  
+								<div class="ch-lbl mt-4">Bal. Target</div>
+								<div class="ch-val">{{dealerCheatSheetData && dealerCheatSheetData.balTarget?dealerCheatSheetData.balTarget:""}} MT</div>
+   							</div>
+							   <div class="col-md-3">
+								<div class="ch-lbl">Last Order Date</div>
+								<div class="ch-val">{{dealerOrdersOriginal && dealerOrdersOriginal.length>0?dealerOrdersOriginal[0].orderDate:""}}&nbsp;</div>
+  
+								<div class="ch-lbl mt-4">Order Qty & Status</div>
+								<div class="ch-val">{{dealerOrdersOriginal && dealerOrdersOriginal.length>0?dealerOrdersOriginal[0].quantity:""}} <span *ngIf="dealerOrdersOriginal && dealerOrdersOriginal.length>0" [ngClass]="{'order-td green-color ': dealerOrdersOriginal[0].status == 'DELIVERED', 'order-td orange_color ' : dealerOrdersOriginal[0].status != 'DELIVERED' }">({{dealerOrdersOriginal[0].status}})</span></div> 
+
+   							</div>
+							<div class="col-md-3" style="display: none;">
+								<div class="ch-lbl">Bal Day Tgt</div>
+								<div class="ch-val">{{dealerCheatSheetData && dealerCheatSheetData.balDayTarget?dealerCheatSheetData.balDayTarget:""}} MT</div>
+							</div>
+  
+                        </div>
+                        <div class="row">
+							<div class="col-md-12 mb-4">
+								<div class="cd_div mt-4">
+									<div class="row">
+										<div class="col-md-1">
+											<img src="assets/images/cd_image.jpg" class="img-fluid">
+										</div>
+										<div class="col-md-11">
+											<div class="fw700 mb-">CD Opportunity!</div>
+											 <div *ngIf="cdData!=null && cdData.length>0 " class="">Pay {{ cdData[0].billAmt!=null ?cdData[0].billAmt:""}}/- today to avail Cash Discount of <span class="green-color">{{cdData[0].cdGain}}</span></div>
+										</div>
+									</div>
+								</div>
+							 </div>
+                        </div>
+							<div class="row" style="display: none;">
+                                <div class="col-md-12 mb-4">
+								<div class="  mt-4">
+								<div class="row">
+ 								 <div class="col-md-12">
+                                     <div class="mb-">Statement of Account</div>
+                                  </div>
+  								</div>
+								<div class="row mt-4">
+ 								 <div class="col-md-3 ">
+                                     <div class="mb-">Select Month</div>
+                                  </div>
+								  
+								  <div class="col-md-4">
+                                     <div class="mb-"><select class="form-select rounded-1" aria-label="Default select example">
+									 <option value="">Select</option>
+									  <option value="">Option 1</option>
+									 </select></div>
+                                  </div>
+								  
+								  <div class="col-md-2">
+                                    <a class="btn btn-primary">EMAIL</a>
+                                   </div>
+								  
+								    <div class="col-md-2">
+ 									<a class="btn btn-bordered">WHATSAPP</a>
+                                  </div>
+								  
+  								</div>
+								 </div>
+								 </div>
+                            </div>
+							
+                        </div>
+                        <div class="bg-white p-4 mb-4  shadow-sm rounded-3">
+							<div class="row">
+								<div class="col-md-9 mb-4 ">
+									<div class="fontSizeLg fw600 mb-2">Order History</div>
+								</div>
+								<div class="col-md-3 mb-4 ">
+									<select class="form-select rounded-1" aria-label="Default select example" (change)="refreshOrderHistory($event)">
+										<option value="ALL" selected>All</option>
+										<option value="Pending">Pending</option>
+									  </select>
+								</div>
+ 							</div>
+ 							
+                             <div class="row">
+								<div class="col-md-12" >
+								   <table   class="table table-light fixheader" style="font-size:.775rem">
+									<thead>
+										<tr class="table-info">
+											<th style="width:22%">Ord ID</th>
+											<th  style="width:15%">Order Date</th>
+											<th  style="width:8%">Qty</th>
+											<th  style="width:20%">Brand Product</th>
+											<th style="width:15%">Status</th>
+											<th style="width:10%">Action</th>
+										   </tr>
+									</thead>
+									<tbody style="max-height:300px;" slimScroll [options]="opts">
+									
+									<tr *ngFor="let order of dealerOrders">
+									  <td  style="width:22%" class="order-td dull_black"><span style="cursor:pointer;"   (click)="trackOrderFromList(order)">{{order.orderId}}</span></td>
+									  <td  style="width:15%" class="order-td dull_black">{{order.orderDate}}</td>
+									  <td style="width:8%" class="order-td dull_black">{{order.quantity}}</td>
+									  <td style="width:20%" class="order-td dull_black">{{order.productName}}</td>
+									  <td style="width:15%" [ngClass]="{'order-td green-color ': order.status == 'DELIVERED', 'order-td orange_color ' : order.status != 'DELIVERED' }">{{order.status}}</td>
+									  <td style="width:10%"><span style="cursor:pointer;"  class="order-td c_blue" (click)="trackOrderFromList(order)" *ngIf="order.status!='PLACED' && order.status!='CONFIRMED'">View</span> <span *ngIf="order.status=='PLACED' ||   order.status=='CONFIRMED'" class="red_color order-td" style="cursor:pointer;" (click)="editOrder(order)">Edit</span></td>
+									</tr>
+									</tbody>
+								   </table>
+								</div>
+                               </div>
+							   <div class="row text-right">
+								<div class="col-md-12">
+									<button  title="Previous" class="btn btn-primary" (click)="movePrevious()"  [disabled]="orderPageId==1"><span class="fa fa-angle-double-left"></span></button>
+									<button  title="Next" type="button" class="btn btn-primary mx-2" (click)="moveNext()"  [disabled]="!orderDataAvailable "><span class="fa fa-angle-double-right"></span></button>
+								</div>
+							   </div>
+                        </div>
+</div>
+
+<div class="bg-white p-4 shadow-sm rounded-3" *ngIf="orderStage != 'view'">
+	<div class="row mb-2">
+		<div class="fontSizeLg fw600 mb-2 col-md-4">Place New Order</div>
+		<div class="col-md-8 mb-1" *ngIf="shippingMessage">
+			<div class="plantMessage fontSizeSm fw600">
+				<div class="">{{shippingMessage}}</div>
+			</div>
+		 </div>
+	</div>
+	<div class="row">
+		<div *ngIf="orderStage=='new'|| orderStage=='edit'" class="row">
+			<div class="col-md-6 mb-4">
+				<ng-multiselect-dropdown #product="ngModel" name="product" [settings]="dropdownSettings" [placeholder]="'Select Product'" [data]="productsdata" (onDeSelect)="onDeSelect($event)"
+										 (onDropDownClose)="onDropDownClose()" (onSelect)="onItemSelect($event)" (onSelectAll)="onSelectAll($event)" [(ngModel)]="selectedItems" (ngModelChange)="ProductSelectionChange($event)">
+				</ng-multiselect-dropdown>
+			</div>
+			<div class="col-md-6 mb-4" style="position: relative;">
+				<input type="email" class="form-control" placeholder="Ship to party">
+				<span style="position: absolute;right: 13px; top: 3px;">
+				  <button type="button" class="btn btn-primary btn-white-color" (click)="selectPartylist()">
+					select
+				  </button>
+				</span>
+			</div>
+		  <div *ngIf="mappingData.productType=='SINGLE'">
+			<div class="row d-flex align-items-center pt-2 pb-2" *ngFor="let ship of mappingData.shipToParty;let indexOfelement=index;">
+			  <div class="col-md-8 fontSizeSm fw700">
+
+				<div _ngcontent-kik-c50="" class="fontSizeSm fw700">{{ship.dapId?ship.dapId + " - " :""}} {{ship.partyId}}</div>
+				<div _ngcontent-kik-c50="" class="fontSizeXs fw700">{{ship.partyName}}</div>
+
+			  </div>
+			  <div class="col-md-3 d-flex align-items-center">
+				<div class="float-start" style="width: 80px;"><input type="text" class="form-control form-control-sm" placeholder="" [(ngModel)]="ship.quantity" numeric decimals="2"></div>
+				<div class="float-start fontSizeXs pl-3">&nbsp;Tons</div>
+				<div class="" style="cursor:pointer;" (click)="removeCurrentItem('shipment',ship)"><i class="fa fa-close bg_orange pull-right fs-md"></i></div>
+			  </div>
+			  <div class="col-md-1">
+			  </div>
+			</div>
+		  </div>
+		  
+      <div *ngIf="mappingData.productType=='MULTIPLE' && mappingData.shipToParty.length>0">
+        <div class="fontSizeSm fw700">
+          {{mappingData.shipToParty[0].dapId? mappingData.shipToParty[0].dapId+ " - ":""  }} {{mappingData.shipToParty[0].partyId}} ({{mappingData.shipToParty[0].partyName}})
+        </div>
+
+        <div class="row d-flex align-items-center pt-2 pb-2" *ngFor="let material of mappingData.material;let indexOfelement=index;">
+          <div class="col-md-8 fontSizeSm fw700"> {{material.productName}}</div>
+
+          <div class="col-md-3 d-flex align-items-center" *ngFor="let party of mappingData.shipToParty;let indexOfelement=index;">
+            <div class="float-start" style="width: 80px;"><input type="text" class="form-control form-control-sm" placeholder=""  [(ngModel)]="material.quantity"  numeric decimals="2"></div>
+            <div class="float-start fontSizeXs pl-3">Tons</div>
+            <div class="" style="cursor:pointer;" (click)="removeCurrentItem('product',material)"><i class="fa fa-close bg_orange pull-right fs-md"></i></div>
+          </div>
+          <div class="col-md-1">
+
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <select class="form-select rounded-1" aria-label="Default select example" (change)="selectChangeHandler('transtype',$event)">
+          <option value="COMPANY" selected>Company</option>
+          <option value="SELF">Self</option>
+        </select>
+      </div>
+      <div class="col-md-6 mb-4">
+	     <select  [disabled]="mappingData.transType=='COMPANY'" class="form-select rounded-1" aria-label="Default select example" (change)="selectChangeHandler('incogroup',$event)">
+			<option *ngFor="let o of incoterms" value="{{o.id}}" >{{o.value}}</option>
+		  </select>
+      </div>
+	  <div class="row d-flex align-items-center pt-2 pb-2 border-top " style="padding-right:0"  *ngIf="mappingData.transType=='COMPANY'" >
+		<div class="col-md-6 fontSizeSm fw700">
+
+		  <div _ngcontent-kik-c50="" class="fontSizeSm fw700">Requested Delivery Time Slot</div>
+		   
+
+		</div>
+		<div class="col-md-6   "  style="padding-right:0">
+		  <div class="float-end  pl-3 fontSizeSm fw600">{{selectedDate}},{{selectedTime}}</div>
+		</div>
+	  </div>
+	  
+	   
+	  <div class="row d-flex align-items-center pt-2 pb-2 border-bottom"  *ngIf="mappingData.transType=='COMPANY'" >
+		<div class="col-md-4 fontSizeSm fw700">
+		  <div _ngcontent-kik-c50="" class="fontSizeSm fw700"><span  class="fa fa-calendar"  style="color:red;background-color: #B7C8FE;padding:5px;border-radius: 5px;"></span>&nbsp;Date</div>
+		</div>
+		<div class="col-md-8 float-end" >
+			<div class="col-md-12 row" *ngIf="dealerData.dates">
+				 <div class="  datetimes   fontSizeXs fw700 cursorPointer" [ngClass]="{'borderBlue':d==selectedDateValue}" *ngFor="let d of dealerData.dates" (click)="selectDate(d)"><span  >{{d}}</span></div>
+			</div>
+		</div>
+	  </div>
+	  <div class="row d-flex align-items-center pt-2 pb-2"  *ngIf="mappingData.transType=='COMPANY'" >
+		<div class="col-md-4 fontSizeSm fw700">
+		  <div _ngcontent-kik-c50="" class="fontSizeSm fw700"><span  class="fa fa-clock-o"  style="color:red;background-color: #B7C8FE;padding:5px;border-radius: 5px;"></span>&nbsp;Time</div>
+		</div>
+		<div class="col-md-8 d-flex align-items-center    float-end" >
+			<div class="col-md-12 row" *ngIf="timeSlots">
+				<div class="  datetimes   fontSizeXs fw700 " [ngClass]="{'borderBlue':d.isselected,'greybackground':getTimeClass(d),'cursorPointer':!getTimeClass(d)}" *ngFor="let d of timeSlots" (click)="selectTime(d)">{{d.time}}</div>
+			</div>
+		  
+		</div>
+		 
+	  </div>
+	  <div class="row">
+		<div class="col-md-6">
+			<button class="btn btn-primary" (click)="validateQtyandSubmit()">Submit</button>
+			<button type="button" class="btn btn-primary mx-2" (click)="viewOrder()">Cancel</button>
+		</div>
+	  </div>
+    </div>
+    <div class="text-center " *ngIf="orderStage=='success'">
+      <div class="green-color fontSizeLg fw700 mb-4">Thank you for using Suvidha</div>
+      <div class="fonSizeXs fw700">
+        We acknowledge your order for
+        <div *ngIf="mappingData.productType=='SINGLE'">
+          {{mappingData.material[0].productName}}(
+          <span *ngFor="let party of mappingData.shipToParty;let indexOfelement=index;">
+            {{party.quantity}} Tons #{{party.orderId}} {{(indexOfelement==(mappingData.shipToParty.length-1))?'':','}}
+          </span>
+          )
+        </div>
+        <div *ngIf="mappingData.productType=='MULTIPLE'">
+          <span *ngFor="let party of mappingData.material;let indexOfelement=index;">
+            {{mappingData.material[0].productName}}({{party.quantity}} Tons #{{party.orderId}} {{(indexOfelement==(mappingData.material.length-1))?'':','}})
+          </span>
+        </div>
+        Please use Reference No. to Track your Order. Transport selected is {{mappingData.transType}} Transport 
+		<span *ngIf="mappingData && mappingData.freight && mappingData.freight!='' && mappingData.freight!=null">(Freight rate : Rs. {{mappingData.freight}}/MT )</span>
+        and your order will served from {{mappingData.plantName}}
+      </div>
+      <div class="mt-4">
+        <div class="row">
+          <div class="col-md-4">
+            <button class="btn btn-primary btn-darkblue-color  w-100" (click)="newOrder()">Order Again</button>
+          </div>
+          <div class="col-md-4">
+            <button class="btn btn-primary btn-orange-color w-100" (click)="trackOrder()">Track Order</button>
+          </div>
+		  <div class="col-md-4">
+            <button class="btn btn-primary btn-darkblue-color  w-100" (click)="viewOrder()">Back</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

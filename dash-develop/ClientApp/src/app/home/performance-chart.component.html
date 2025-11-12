@@ -1,0 +1,43 @@
+
+  <div class="p-3 pt-3 pb-2 border-bottom dashHomeBorderBottom">
+  <div class="row">
+     <div class="col-md-12"> 
+<div class="info_box_header row"> 
+<div class="fontSizeLg fw600 mb-2 col-md-8 dashHomefontSize18px dashHomeWidColor">Performance</div> 
+     
+     <div class=" col-md-4 text-right">
+      <a class="btn d-inline btn-sm d-inline   mr-3 borderRadius5 ml-2"  [ngClass]="{'btn-primary ':performanceReportType=='day','btn-bordered-gray ':performanceReportType=='week'}" (click)="getPerformanceData('day')">DAY</a>
+      <a class="btn d-inline btn-sm  d-inline   mr-3 borderRadius5 ml-2 marginleft25" [ngClass]="{'btn-primary ':performanceReportType=='week','btn-bordered-gray':performanceReportType=='day'}"  (click)="getPerformanceData('week')">WEEK</a>
+     
+     </div>	
+</div>
+      </div>
+</div>
+</div>     
+    
+    <div class="row">
+     <div class="col-md-12"> 
+<div class="info_box_content"> 
+<div class="px-3 pt-2">
+<div class="row">
+<div class="col-md-8">
+<p class="c_gray fontSizeRsm">Last Refresh Time: {{performanceReportRefreshTime | date:'MM/dd/yyyy hh:mm:ss a'}}</p>
+</div> 
+<div class="col-md-4 text-right">
+<p class="c_gray fontSizeRsm curPointer" (click)="getPerformanceData('')"><i class="fa fa-refresh  bg_orange fs-md" style="font-size: 11px !important;"></i> Refresh</p>
+</div>
+</div>
+
+</div>
+<div class="row">
+     <div class="col-md-12 m-2">
+      <canvas id="performancechart"  width="250" height="250"></canvas>
+      <div id="chartjs-tooltip"><table></table></div>
+     </div>
+     
+      
+    </div>
+</div>
+</div>
+</div>
+  

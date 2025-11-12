@@ -1,0 +1,33 @@
+<div  *ngIf="message" class="modal" tabindex="-1" role="dialog" style="display:block!important">  
+    <div class="modal-dialog custom-alert modal-dialog-centered modal-sm">
+      <div class="modal-content rounded-0">
+        <div class="modal-header rounded-0">
+          <h5 class="modal-title fontSizeR fw700" id="exampleModalLabel">Choose from where you want order</h5>
+        </div>
+        <div class="modal-body" style="max-height: 350px;overflow-y: auto;">
+          <form [formGroup]="plantForm"  >
+            <div>
+              <div class="form-check pt-2 pb-2" *ngFor="let plant of message.text;let indexOfelement=index;">
+                <!--<input id="flexCheckDefault_{{indexOfelement+1}}" type="radio" class="custom-control-input" value="{{plant.plant}}:{{plant.incoterm}}" name="plant" formControlName="plant" (change)="isAllSelected($event,plant.plantDesc)">-->
+                <input id="flexCheckDefault_{{indexOfelement+1}}" type="radio" class="custom-control-input" [value]="plant.plant"  name="plant" formControlName="plant" (change)="isAllSelected($event,plant.plantDesc)">
+
+
+                <!--<input class="form-check-input" type="radio" [(ngModel)]="plant.isChecked" [checked]="plant.isChecked" id="flexCheckDefault_{{indexOfelement+1}}" [value]="plant.partyId" (change)="isAllSelected(plant,$event)">-->
+
+                <label class="form-check-label p-1" for="flexCheckDefault_{{indexOfelement+1}}">
+                  <div class="fontSizeSm fw700">
+                    {{plant.plantDesc}}
+                  </div>
+                </label>
+              </div>
+
+            </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-light btn-orange-color-without-solid float-start" (click)="message.noFn()">Cancel</button>
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="message.yesFn()">Ok</button>
+        </div>
+      </div>
+    </div>
+</div>  

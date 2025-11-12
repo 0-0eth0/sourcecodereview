@@ -1,0 +1,58 @@
+
+  <!--<ngx-ui-loader  bdColor="rgba(0, 0, 0, 0.8)" size="default" color="#269bff" type="three-strings" ><p style="color: white"> Please Wait.. </p></ngx-ui-loader>-->
+  <!--<ngx-spinner bdColor="rgba(0, 0, 0, 0.8)" size="default" color="#269bff" type="three-strings" ><p style="color: white"> Please Wait.. </p></ngx-spinner>-->
+  <div *ngIf="isLoading|async" class="splash">
+    <div class="color-line"></div>
+    <div class="splash-title">
+      <img src="assets/images/loading-bars.svg" width="64" height="64" />
+    </div>
+
+  </div>
+<cancelorder-dialog></cancelorder-dialog>
+  <popup-dialog></popup-dialog>
+<order-status-dialog></order-status-dialog>
+<confirmorder-dialog></confirmorder-dialog>
+<l1mapping-dialog></l1mapping-dialog>
+<party-list-dialog></party-list-dialog>
+  <app-confirm-dialog></app-confirm-dialog>
+  <calander-dialog></calander-dialog>
+  <header class="mb-3 shadow-sm" *ngIf="isLoggedIn|async">
+    <div class="container-fluid">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="#" class="nav-link float-start  link-secondary" style="padding-top: 15px;"><span class="">
+            <img src="assets/images/menu-ic.svg" />
+          </span></a>
+          <a class="float-start">
+            <img src="assets/images/logo_white.png" style="padding: 0;">
+          </a>
+        </li>
+        </ul>
+
+        <div class="searchForm"> <i class=""><img src="assets/images/search-ic.svg"> </i>
+          <input type="text" class="form-control form-input" placeholder="Search...">
+
+        </div>
+        <div class="ms-3 me-3"><a class=""><img src="assets/images/bell-ic.svg"> </a></div>
+        <div class="ms-3 me-3"><a class=""><img src="assets/images/account-svg.svg" width="40" height="40" class="rounded-circle"> </a></div>
+        <div class="dropdown text-end ml-4">
+          <span class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="ms-2 headerName">
+              {{username}}
+            </span>  
+          </span>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li class="curPointer"><a class="dropdown-item" (click)="logout()" >Logout <img style="width: 20px;
+              height: 20px;" src="assets/images/logout.svg" class="float-end"></a></li>
+           </ul>
+        </div>
+        
+      </div>
+    </div>
+  </header>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+

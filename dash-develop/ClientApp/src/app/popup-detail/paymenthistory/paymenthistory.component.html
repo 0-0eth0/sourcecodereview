@@ -1,0 +1,18 @@
+<div class="row"> 
+  <div class="">
+    <h6 class="float-start fontGray fontSizeRsm">Last Refresh Time: {{refreshTime}}</h6>
+    <h6 class="float-end fontGray curPointer fontSizeRsm" (click)="getPaymentHistory()"><i class="fa fa-refresh color_blue" aria-hidden="true"></i> Refresh</h6>
+   </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-12">
+      <div class="row">
+          <div class="col-md-12">
+            <div style="display: block;">
+              <canvas id="paymenthistorychart"  width="250" height="250"></canvas>
+            </div>
+          </div>
+          
+        </div>
+    </div>
+  </div>

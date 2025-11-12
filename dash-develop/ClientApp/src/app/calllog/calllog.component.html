@@ -1,0 +1,101 @@
+<div class="bg-white p-4 shadow-sm rounded-3">
+  <div class="row">
+  <div class="col-md-12 mb-3 border-bottom">
+    <div class="fontSizeSm fw500 mb-0">Call Log:</div>
+    <div class="fontSizeLg fw600 mb-2">{{dealerData.dealerList!=null ? dealerData.dealerList[0].dealerName + "  ("+ dealerData.dealerList[0].dealerId +")":""}}<i class="statusIcon gstatus">C</i></div>
+    
+ </div>
+ 
+</div>
+<div class="row">
+  <div class="col-md-12"> 
+  
+  <div class="accordion" id="accordionExample">
+<div class="accordion-item" *ngFor="let list of callLogData;let indexOfelement=index;">
+<h2 class="accordion-header" id="headingOne_{{list.call_id}}">
+
+<button class="accordion-button" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#collapseOne_'+list.call_id" aria-expanded="false" [attr.aria-controls]="'collapseOne_'+list.call_id">
+{{list.note_creation_time}}
+</button>
+
+
+</h2>
+
+<div id="collapseOne_{{list.call_id}}" class="accordion-collapse collapse "  [ngClass]="{'show':indexOfelement==0}" [attr.aria-labelledby]="'headingOne_'+list.call_id" data-bs-parent="#accordionExample">
+  
+
+<div class="accordion-body borderRadius5">
+  <div class="float-end fontSizeSm fw600 primaryColor curPointer">
+    <a (click)="editCallLog(list)" class="curPointer" *ngIf="calculateDiff(list.note_creation_time)<72">Edit</a>
+  </div>
+<div class="row text-left">
+
+<div class="col-md-4" >
+  <p class="fontSizeBold"> <i [ngClass]="{'fa fa-check':list.check_order_discussion_id}"></i>Order Placed</p>
+  </div>
+<div class="col-md-4" >
+    <p class="fontSizeBold"> <i [ngClass]="{'fa fa-check':list.check_complaint_sr_id}"></i>Complaint & SR</p>
+</div>
+<div class="col-md-4" >
+  <p class="fontSizeBold"> <i [ngClass]="{'fa fa-check':list.check_non_billing_churn_id}"></i>Nonbilling & Churn</p>
+</div>
+<div class="col-md-4" >
+  <p class="fontSizeBold"> <i [ngClass]="{'fa fa-check':list.check_outstaing_collection_id}"></i>Outstanding & Collection</p>
+  </div>
+<div class="col-md-4" >
+    <p class="fontSizeBold"> <i [ngClass]="{'fa fa-check':list.check_scheme_id}"></i>Scheme</p>
+</div>
+<div class="col-md-4" >
+  <p class="fontSizeBold"> <i [ngClass]="{'fa fa-check':list.check_others_id}"></i>Others</p>
+</div>
+
+</div>
+
+
+<div class="row ">
+<div class="col-md-6 text-left">
+    <p class="fontSizeSm"><b>Order Discussion: </b> {{list.order_discussion_text}}</p>
+</div>
+<div class="col-md-6 text-left">
+  <p class="fontSizeSm"><b>Complaint & SR : </b> {{list.complaint_sr_text}}</p>
+</div>
+
+<div class="col-md-6 text-left">
+    <p class="fontSizeSm"><b>Non Billing:</b> {{list.non_billing_reason_text}}</p>
+  </div>
+
+<div class="col-md-6 text-left">
+    <p class="fontSizeSm"><b>Outstanding & Collection : </b> {{list.check_outstaing_collection_text}}</p>
+</div>
+
+</div>
+  
+
+<div class="row ">
+<div class="col-md-6 text-left">
+<p class="fontSizeSm"><b>Scheme : </b> {{list.scheme_text}}</p>
+</div>
+
+<div class="col-md-6 text-left">
+<p class="fontSizeSm"><b>Others : </b> {{list.others_text}}</p>
+</div>
+</div>
+
+
+<div class="row ">
+  <div class="col-md-12 text-left">
+<p class="fontSizeSm"><b>Next follow up : </b> {{list.next_followUp_date}}</p>
+</div>
+</div>
+<div class="row ">
+<div class="col-md-12 text-left">
+<p class="fontSizeSm"><b>Notes:</b> {{list.note}}</p>
+</div>
+</div>
+</div>
+</div>
+  </div>
+  </div>
+</div>
+</div> 
+</div>

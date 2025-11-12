@@ -1,0 +1,24 @@
+<div class="row"> 
+  <div class="">
+    <h6 class="float-start fontGray fontSizeRsm">Last Refresh Time: {{collectionTrendRefreshTime}}</h6>
+    <h6 class="float-end fontGray curPointer fontSizeRsm" (click)="getCollectionTrend()"><i class="fa fa-refresh color_blue" aria-hidden="true"></i> Refresh</h6>
+   </div>
+  </div>
+  <div class="row text-center">
+    <div class="col-md-12">
+      <div class="row">
+        <!--<div class="col-md-12 pb-2">
+          <span class="col-md-3 btn fontGray btn-sm" [ngClass]="{'selectedItem':currentView=='threemonth'}"  (click)="refreshData('threemonth')">3M</span>
+          <span class="col-md-3 btn fontGray btn-sm" [ngClass]="{'selectedItem':currentView=='sixmonth'}"  (click)="refreshData('sixmonth')">6M</span>
+          <span class="col-md-3 btn fontGray btn-sm" [ngClass]="{'selectedItem':currentView=='twelemonth'}"  (click)="refreshData('twelemonth')">12M</span>
+          <span class="col-md-3 btn fontGray btn-sm" [ngClass]="{'selectedItem':currentView=='twoyear'}"  (click)="refreshData('twoyear')">2Y</span>
+        </div>-->
+          <div class="col-md-12">
+            <div style="display: block;">
+              <canvas id="collectiontrendchart"  width="250" height="250"></canvas>
+            </div>
+          </div>
+          
+        </div>
+    </div>
+  </div>
